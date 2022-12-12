@@ -16,6 +16,9 @@ use App\Http\Controllers\DropzoneController;
 
 Route::get('/', 'App\Http\Controllers\RecetaController@show');
 
+Route::get('test', function () {
+    return view('frontend.index');
+});
 
 
 
