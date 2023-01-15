@@ -14,11 +14,14 @@ use App\Http\Controllers\DropzoneController;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\RecetaController@show');
+Route::get('/', 'App\Http\Controllers\PublicController@index');
 
+Route::get('/{seccion}','App\Http\Controllers\PublicController@seccion');
+
+/*
 Route::get('test', function () {
-    return view('frontend.index');
-});
+    
+});*/
 
 
 
