@@ -12,7 +12,7 @@ class PublicController extends Controller
     {  return PublicService::index(); 
     }
 
-    public function seccion($seccion)
+ /*   public function seccion($seccion)
     {  return "es seccion ".$seccion; 
-    }
+    }*/
 }

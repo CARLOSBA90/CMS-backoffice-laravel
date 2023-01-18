@@ -21,12 +21,6 @@ class RecetaService
 
     ///GENERA LISTA DE RECETAS(PUBLICO)
     public static function show(){
-        return view('receta.show')->with('recetas',
-        Receta::join('seccions', 'seccions.id', '=', 'recetas.seccion_id')
-          ->where("recetas.enabled","=",1)
-          ->get(['recetas.id','recetas.nombre AS nombre','recetas.descripcion','seccions.nombre AS seccion'])
-
-    );
     }
 
 

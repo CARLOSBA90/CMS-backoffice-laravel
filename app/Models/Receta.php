@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Receta extends Model
 {
     use HasFactory;
-
+    /**
+         * The attributes that should be cast.
+         *
+         * @var array
+         */
+        protected $casts = [
+            'created_at' => 'datetime:d-m-Y',
+        ];
 
     public function imagen()
     {
@@ -20,5 +27,6 @@ class Receta extends Model
     {
         return $this->belongsTo('App\Models\Seccion','seccion_id','id');
     }
-    
+
+
 }

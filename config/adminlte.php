@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -313,13 +313,13 @@ return [
         ],
         [
             'text'        => 'Recetas',
-            'url'         => 'recetas',
+            'url'         => '/cocina/recetas',
             'icon'        => ' far fa-edit',
             'label_color' => 'success',
         ],
         [
             'text'        => 'Secciones',
-            'url'         => 'seccion',
+            'url'         => '/cocina/seccion',
             'icon'        => 'far fas fa-clone',
             'label_color' => 'success',
         ],

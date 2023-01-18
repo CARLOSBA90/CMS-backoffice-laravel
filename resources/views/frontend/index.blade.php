@@ -36,34 +36,31 @@
          <div class="row">
            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
+                    @foreach($recetas as $receta)
                         <div class="col-md-10 col-lg-10 col-xl-10">
-                                        <!-- Divider-->
-                                                <hr class="my-4" />
                                                     <!-- Post preview-->
-                                                            <div class="post-preview">
-                                                                <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
-                                                                <p class="post-meta">
-                                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet ipsum ac erat dictum, in venenatis libero vestibulum. Nam venenatis maximus mi, placerat feugiat eros facilisis ut. Aenean elit urna, mollis a mi a, blandit pellentesque leo. Sed interdum volutpat porttitor. Vestibulum ut vulputate velit. Sed dignissim bibendum nunc, nec pellentesque diam faucibus eget. Nam sagittis massa risus, id elementum arcu blandit ac. Vestibulum ornare nulla vitae leo tempus sodales. Proin et condimentum neque. Morbi blandit sed erat non placerat. Quisque sed augue rhoncus, interdum nunc vel, hendrerit sapien.
-
-                                                                    Pellentesque ut gravida nunc. Praesent tristique magna aliquam, imperdiet mauris et, pretium felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras elementum semper tortor. Donec vitae nisi et nulla egestas interdum eget at massa. Donec tempor porta tellus, sit amet placerat diam interdum ut. Proin eget bibendum mi. Maecenas rutrum nisi id dolor egestas condimentum. Curabitur ullamcorper placerat facilisis. Praesent lacus nunc, dignissim non accumsan sit amet, pharetra et diam. Curabitur volutpat risus ipsum, id varius ligula viverra at. Etiam nec dignissim turpis. Nam aliquam a nisl ac bibendum.
-
-                                                                    Donec eu tincidunt sem. Mauris vestibulum semper lorem. Nam non lacus quis purus efficitur feugiat. Etiam vel elit tristique, efficitur elit sit amet, blandit diam. Nullam iaculis vulputate lacinia. Proin vitae tristique purus. Integer iaculis erat nec aliquet tempor. Suspendisse risus lacus, laoreet sed bibendum vitae, tristique vitae orci. Donec in scelerisque risus. Duis sagittis aliquam sem, id semper lectus ullamcorper et. Integer ultrices condimentum dolor, sed facilisis lacus scelerisque ut. Duis elit ipsum, scelerisque at diam non, ornare egestas tellus. Sed varius ut magna vel sodales. Etiam aliquet placerat finibus. Pellentesque molestie sit amet ipsum non iaculis. Ut tortor enim, egestas ac elit a, sodales maximus dui.
-
-                                                                    Donec vehicula vel risus eu molestie. Proin rutrum lectus ipsum, sit amet aliquam augue aliquet et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi eu posuere ante, quis lacinia leo. Nulla faucibus diam vel dolor iaculis luctus. Integer ligula ante, sagittis vel tempus id, ornare vel augue. Maecenas rutrum, purus tincidunt aliquam ullamcorper, odio mauris feugiat eros, at posuere nulla urna a eros. Ut sollicitudin neque id sapien viverra sagittis. In sollicitudin leo justo, id egestas arcu varius bibendum.
-
-                                                                    Fusce eleifend mi vitae nibh pulvinar, vel consectetur nibh vestibulum. Morbi magna libero, vulputate vestibulum dictum vel, ullamcorper vel sapien. Suspendisse pretium, libero vel porttitor consequat, ex dolor gravida nibh, vel eleifend leo nisl ac sapien. Ut eleifend orci sed metus tempus porta. Morbi accumsan mauris dui. Aliquam dictum facilisis pulvinar. Donec nec nisi felis. Quisque ultrices enim a justo sagittis, et dignissim eros convallis. Cras pellentesque nulla id tristique faucibus. Quisque id pellentesque nisl. Aliquam erat volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse eu mauris eget purus efficitur vulputate. Quisque nec finibus purus. Sed consectetur gravida mi, vel eleifend velit feugiat nec. Etiam venenatis gravida varius.
-                                                                    
+                                                   <div class="post-preview mhover">
+                                                                <h3 class="post-title">{{$receta->nombre}} </h3> <sub>{{$receta->seccion}}</sub>
+                                                                <br>
+                                                                <span class="post-meta">
+                                                                    {{$receta->resumen}}
                                                                     <br>
-                                                                    Posted by
-                                                                    <a href="#!">Start Bootstrap</a>
-                                                                    on September 18, 2022
-                                                                </p>
+                                                                    Imagen?
+                                                                    <br>
+                                                                    {{substr($receta->fecha,0,10)}}
+                                                                </span>
                                                             </div>
                                                     <!-- Divider-->
                                                 <hr class="my-4" />
                                         <!-- Pager-->
-                            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Paginacion</a></div>
-                        </div>
+
+                          </div>
+                        @endforeach
+
+
+
+
+                        <div class="d-flex justify-content-end mb-4">{{$recetas->links()}}</div>
                 </div>
             </div>
 
