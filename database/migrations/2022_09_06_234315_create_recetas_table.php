@@ -17,12 +17,13 @@ class CreateRecetasTable extends Migration
             $table->increments('id');
             $table->string('nombre',300)->unique();
             $table->string('descripcion',4000);
-            $table->string('resumen',255);
+            $table->string('resumen',510)->nullable();
+            $table->string('imagen_portada',255)->nullable();
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
             $table->boolean('enabled')->default(false);
-            $table->foreignId('seccion_id')->nullable();//->after('enabled');
-          
+            $table->foreignId('seccion_id')->nullable();//->after('enabled');   
+            $table->integer('vistas')->nullable();  
             /* 
             $table->unsignedInteger('admin_id')->nullable();
             $table->foreign('admin_id')->references('id')->on('admin_users')->onUpdate('cascade');*/

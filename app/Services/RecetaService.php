@@ -43,12 +43,19 @@ class RecetaService
 
     ///GUARDA NUEVA RECETA, RETORNA ID
     public static function guardar(Request $request){
+        $imageName = time() . '.' . $request->imagen_portada->extension();
+        $request->imagen_portada->move(public_path('images'),$imageName);
+
+        ///T0D0, valida que se haya guardado el archivo
+
         $receta = new Receta();
         $receta->nombre = $request->get('nombre');
         $receta->descripcion = $request->get('descripcion');
         $receta->enabled = $request->get('enabled')=='1'? 1 : 0;
         $receta->published_at = $request->get('published_at');
         $receta->seccion_id = $request->get('seccion');
+        $receta->resumen = $request->get('resumen');
+        $receta->imagen_portada = $request->get('imagen_portada');
         $receta->save();
         return $receta->id;
     }

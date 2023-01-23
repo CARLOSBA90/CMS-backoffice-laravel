@@ -36,6 +36,8 @@
          <div class="row">
            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="super-frame">
+                    <div class="frame">
                     @foreach($recetas as $receta)
                         <div class="col-md-10 col-lg-10 col-xl-10">
                                                     <!-- Post preview-->
@@ -53,14 +55,10 @@
                                                     <!-- Divider-->
                                                 <hr class="my-4" />
                                         <!-- Pager-->
-
                           </div>
                         @endforeach
-
-
-
-
-                        <div class="d-flex justify-content-end mb-4">{{$recetas->links()}}</div>
+                        </div></div>
+                    <div class="d-flex justify-content-end mb-4">{{$recetas->links()}}</div>
                 </div>
             </div>
 

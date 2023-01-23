@@ -14,8 +14,7 @@ class AddAlter extends Migration
     public function up()
     {
         Schema::table('recetas', function (Blueprint $table) {
-            //$table->foreignId('seccion_id')->nullable()->after('enabled');
-            $table->string('resumen',255);
+            $table->integer('vistas')->nullable(); 
         });
     }
 
@@ -27,8 +26,7 @@ class AddAlter extends Migration
     public function down()
     {
         Schema::table('recetas', function (Blueprint $table) {
-           // $table->dropColumn('seccion_id');
-          //  $table->dropColumn('resumen',255);
+
         });
     }
 }

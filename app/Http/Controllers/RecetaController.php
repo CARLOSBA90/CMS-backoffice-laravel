@@ -42,7 +42,7 @@ class RecetaController extends Controller
                           $request->get('id'), 
                           RecetaService::guardar($request)); /// primero guarda, luego actualiza
 
-        return redirect('/recetas');
+        return redirect('/cocina/recetas');
     }
 
     /**

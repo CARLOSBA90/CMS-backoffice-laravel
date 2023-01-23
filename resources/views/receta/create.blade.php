@@ -18,7 +18,7 @@
           </ul>
       </div>
   @endif
-  <form action="/recetas" method="POST">
+  <form action="/cocina/recetas" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
@@ -38,8 +38,18 @@
           <label for="descripcion" class="form-label">Descripci&oacute;n</label>
           <textarea class="form-control" id="editor" name="descripcion" rows="10">{{ old('descripcion') }}</textarea>
         </div>
-      
 
+        <div class="mb-3" id="div-editor">
+          <label for="resumen" class="form-label">Resumen</label>
+          <textarea class="form-control" id="resumen" name="resumen" rows="5" maxlength="510" style="resize:none;">{{ old('resumen') }}</textarea>
+        </div>
+      
+        <div class="mb-3" id="div-editor">
+          <label for="imagen_portada" class="form-label">Imagen Portada</label>
+          <input type="file" name="imagen_portada" id="imagen_portada" accept="image/*" class="form-control @error('file') is-invalid @enderror">
+        </div>
+
+        
       <div class="mb-3">
         <div class="form-check form-switch">
           <label class="switch"><input type="checkbox" id="enabled" name="enabled" value="1"><span class="slider round"></span></label>
