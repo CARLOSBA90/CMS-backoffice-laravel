@@ -11,7 +11,7 @@ class ImagenService
         $image = $request->file('file');
         $filename = uniqid();
         $imageName = $filename.'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
+        $image->move(public_path('images/img/'),$imageName);
 
         return $imageName;
     }

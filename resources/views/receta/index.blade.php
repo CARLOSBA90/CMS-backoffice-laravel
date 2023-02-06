@@ -12,7 +12,7 @@
   <span class="index-loader" id="index-loader" style="display:none;"><div class="lds-ripple"><div></div><div></div></div></span>
 
   <div class="m-2">
-  <a href="recetas/create" class="btn btn-success">Nuevo </a>
+  <a href="{{route('recetas.create')}}" class="btn btn-success">Nuevo </a>
   </div>
 
   <table id="recetas" class="table table-striped table-bordered shadow-lg dt-responsive" style="width:100%">
@@ -21,6 +21,7 @@
         <th scope="col" class="text-center">ID</th>
         <th scope="col">Titulo</th>
         <th scope="col" class="text-center">Secci&oacute;n</th>
+        <th scope="col">Vistas</th>
         <th scope="col" class="text-center">Fecha Publicaci&oacute;n</th>
         <th scope="col" class="text-center">Estado</th>
         <th scope="col"></th>
@@ -33,12 +34,12 @@
             <td class="text-center">{{$receta->id}}</td>
             <td id="titulo-{{$receta->id}}">{{$receta->nombre}}</td>
             <td class="text-center">{{$receta->seccion}}</td>
+            <td class="text-center">0</td>
             <td class="text-center">{{$receta->published_at}}</td>
             <td class="text-center"><label class="switch"><input class="enable_button" id="estado-{{$receta->id}}" type="checkbox" value="1" onchange="enable('{{$receta->id}}')" @if($receta->enabled==1) checked @endif><span class="slider round"></span></label></td>
-            <td class="text-center"><a class="btn btn-primary" href="/recetas/{{$receta->id}}/edit"> Editar</a></td>
-
+            <td class="text-center"><a class="btn btn-primary" href="{{route('recetas.edit',['receta' =>$receta->id])}}">Editar</a></td>
             <td class="text-center">
-              <form action="{{ route ('recetas.destroy',$receta->id)}}" method="POST"> <? /*onsubmit="return confirm('Confirma que desea borrar la receta con titulo {{$receta->nombre}}');" enctype="multipart/form-data"*/?>
+              <form action="{{ route ('recetas.destroy',$receta->id)}}" method="POST">
               @csrf
               @method('DELETE')
               <button type="submit" style="display:none;" id="borrar-{{$receta->id}}"></button>
@@ -133,7 +134,7 @@
             $("#index-loader").show();
 
             const Http = new XMLHttpRequest();
-            const url="recetas/enable/"+id;
+            const url="{{route('recetas.index')}}/enable/"+id;
 
             //-----LLAMADA AJAX -----//
               Http.open("GET", url);

@@ -27,30 +27,31 @@ Route::get('test', function () {
 
 //-------------MIDDLEWARE-------------------//
 Route::middleware([
-    'auth:sanctum',
+    'auth:sanctum'/*,
     config('jetstream.auth_session'),
-    'verified'
+    'verified'*/
 ])->group(function () {
-    Route::get('/cocina', function () {
+    Route::get('/entrada/cocina', function () {
         return view('dash.index');
     })->name('dash');
 
 
 //-------------SECCIONES-----------------------//
-Route::resource('cocina/seccion','App\Http\Controllers\SeccionController');
-Route::get('cocina/seccion/enable/{id}', 'App\Http\Controllers\SeccionController@enable');
+Route::resource('entrada/cocina/seccion','App\Http\Controllers\SeccionController');
+Route::get('entrada/cocina/seccion/enable/{id}', 'App\Http\Controllers\SeccionController@enable');
 //------------------------------------------//
 
 
 //-------------RECETAS-----------------------//
-Route::resource('/cocina/recetas','App\Http\Controllers\RecetaController');
-Route::get('/cocina/recetas/enable/{id}', 'App\Http\Controllers\RecetaController@enable');
-Route::get('/cocina/recetas/imagen/{id}/{nombre}/{descripcion}', 'App\Http\Controllers\RecetaController@imagen');
+Route::resource('entrada/cocina/recetas','App\Http\Controllers\RecetaController');
+Route::get('entrada/cocina/recetas/enable/{id}', 'App\Http\Controllers\RecetaController@enable');
+Route::get('entrada/cocina/recetas/imagen/{id}/{nombre}/{descripcion}', 'App\Http\Controllers\RecetaController@imagen');
+Route::get('entrada/cocina/recetas/elimina/portada/{id}', 'App\Http\Controllers\RecetaController@eliminaImagen');
 //------------------------------------------//
 
 //-------------IMAGENES-----------------------//
-Route::get('cocina/dropzone', [DropzoneController::class, 'dropzone']);
-Route::post('cocina/dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::get('entrada/cocina/dropzone', [DropzoneController::class, 'dropzone']);
+Route::post('entrada/cocina/dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 
 //------------------------------------------//
 

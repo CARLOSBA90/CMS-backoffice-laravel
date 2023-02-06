@@ -23,7 +23,7 @@ Dropzone.options.imageUpload = {
     const Http = new XMLHttpRequest();
     const id   = $("#id").val();
 
-    const url  = "/recetas/imagen/"+id+"/"+nombre+"/"+descripcion;
+    const url  = "{{route('recetas.index')}}/imagen/"+id+"/"+nombre+"/"+descripcion;
           //-----LLAMADA AJAX -----//
             Http.open("GET", url);
             Http.send();
@@ -39,7 +39,8 @@ Dropzone.options.imageUpload = {
     $(ele).prop("onclick", null).off("click"); ///T0D0 check
     }
 
+    
 
-    var path = "{{ asset('images') }}";
+    var path = "{{ asset('images/img') }}";
 
 </script>

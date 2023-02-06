@@ -41,8 +41,7 @@ class RecetaController extends Controller
         RecetaService::actualizarID(
                           $request->get('id'), 
                           RecetaService::guardar($request)); /// primero guarda, luego actualiza
-
-        return redirect('/cocina/recetas');
+        return redirect(route('recetas.index'));//
     }
 
     /**
@@ -78,7 +77,7 @@ class RecetaController extends Controller
     {  
         $this->validation($request);
         RecetaService::actualiza($request,$id);
-        return redirect('/recetas');
+        return redirect(route('recetas.index'));
     }
 
     /**
@@ -90,7 +89,7 @@ class RecetaController extends Controller
     public function destroy($id)
     {
         RecetaService::elimina($id);
-        return redirect('/recetas');
+        return redirect(route('recetas.index'));
     }
 
     public function validation(Request $request)
@@ -113,5 +112,10 @@ class RecetaController extends Controller
       /// T0D0, VALIDACION PARA NO RE-INSERTAR UNA IMAGEN DOS VECES EN BBDD(CONTROLADO EN JAVASCRIPT)
         RecetaService::imagen($id,$nombre,$descripcion);
         return 1;
+    }
+
+    public function eliminaImagen($id)
+    {
+        return RecetaService::eliminaImagen($id);
     }
 }

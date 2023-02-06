@@ -32,11 +32,11 @@
 
 
         <!-- Main Content ***-->
-        <div class="container-fluid px-12 px-lg-12">
+        <div class="container-fluid px-12 px-lg-12" >
          <div class="row">
            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="super-frame">
+                    <div class="super-frame" style="min-height:450px;">
                     <div class="frame">
                     @foreach($recetas as $receta)
                         <div class="col-md-10 col-lg-10 col-xl-10">

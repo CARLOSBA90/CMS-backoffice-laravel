@@ -41,7 +41,7 @@ class SeccionController extends Controller
     {
         $this->validation($request);
         SeccionService::guardar($request); 
-        return redirect('/seccion');
+        return redirect(route('seccion.index'));
     }
 
     /**
@@ -92,7 +92,7 @@ class SeccionController extends Controller
     public function destroy($id)
     {
         SeccionService::elimina($id);
-        return redirect('/seccion');
+        return redirect(route('seccion.index'));
     }
 
     public function enable($id)

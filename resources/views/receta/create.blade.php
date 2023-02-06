@@ -18,7 +18,7 @@
           </ul>
       </div>
   @endif
-  <form action="/cocina/recetas" method="POST" enctype="multipart/form-data">
+  <form action="{{route('recetas.index')}}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
@@ -39,12 +39,12 @@
           <textarea class="form-control" id="editor" name="descripcion" rows="10">{{ old('descripcion') }}</textarea>
         </div>
 
-        <div class="mb-3" id="div-editor">
+        <div class="mb-3">
           <label for="resumen" class="form-label">Resumen</label>
           <textarea class="form-control" id="resumen" name="resumen" rows="5" maxlength="510" style="resize:none;">{{ old('resumen') }}</textarea>
         </div>
       
-        <div class="mb-3" id="div-editor">
+        <div class="mb-3">
           <label for="imagen_portada" class="form-label">Imagen Portada</label>
           <input type="file" name="imagen_portada" id="imagen_portada" accept="image/*" class="form-control @error('file') is-invalid @enderror">
         </div>
@@ -66,7 +66,7 @@
       <input type="hidden" name="nuevo" value="1"/>
 
       <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
-      <a href="/recetas" class="btn btn-primary">Volver</a>
+      <a href="{{route('recetas.index')}}" class="btn btn-primary">Volver</a>
       </form>
   </div>
   

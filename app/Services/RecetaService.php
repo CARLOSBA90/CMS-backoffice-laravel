@@ -8,6 +8,7 @@ use App\Models\Seccion;
 use App\Models\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
  
 class RecetaService
 {
@@ -43,10 +44,6 @@ class RecetaService
 
     ///GUARDA NUEVA RECETA, RETORNA ID
     public static function guardar(Request $request){
-        $imageName = time() . '.' . $request->imagen_portada->extension();
-        $request->imagen_portada->move(public_path('images'),$imageName);
-
-        ///T0D0, valida que se haya guardado el archivo
 
         $receta = new Receta();
         $receta->nombre = $request->get('nombre');
@@ -55,7 +52,15 @@ class RecetaService
         $receta->published_at = $request->get('published_at');
         $receta->seccion_id = $request->get('seccion');
         $receta->resumen = $request->get('resumen');
-        $receta->imagen_portada = $request->get('imagen_portada');
+
+        if ($request->has('imagen_portada')) {
+            $imageName = time() . '.' . $request->imagen_portada->extension();
+            $request->imagen_portada->move(public_path('images/portada'),$imageName);
+             ///T0D0, valida que se haya guardado el archivo
+            $receta->imagen_portada = $imageName;
+
+        }else {/**T0D0: VALIDACION DE QUE SE INSERTE O NO LA IMAGEN.. */}
+
         $receta->save();
         return $receta->id;
     }
@@ -75,6 +80,15 @@ class RecetaService
         $receta->enabled = $request->get('enabled')=='1'? 1 : 0;
         $receta->published_at = $request->get('published_at');
         $receta->seccion_id = $request->get('seccion');
+        $receta->resumen = $request->get('resumen');
+
+        if ($request->has('imagen_portada')) {
+            $imageName = time() . '.' . $request->imagen_portada->extension();
+            $request->imagen_portada->move(public_path('images/portada'),$imageName);
+             ///T0D0, valida que se haya guardado el archivo
+            $receta->imagen_portada = $imageName;
+
+        }else {/**T0D0: VALIDACION DE QUE SE INSERTE O NO LA IMAGEN.. */}
         $receta->save();
     }
 
@@ -100,6 +114,21 @@ class RecetaService
         $imagen->enabled = true;    
         $imagen->save();
       }
+
+      public static function eliminaImagen($id){
+        $receta = Receta::find($id);
+        $path =  public_path() ."/images/portada/".$receta->imagen_portada;
+        $receta->imagen_portada = null;
+       
+        if(file_exists($path)){
+        File::delete($path);
+        $receta->save();
+        return 1;
+         }
+
+        return 0;
+
+    }
 
 }
 

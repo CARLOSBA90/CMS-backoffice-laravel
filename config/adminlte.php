@@ -253,13 +253,13 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '',
+    'dashboard_url' => 'entrada/cocina',
     'logout_url' => 'logout',
-    'login_url' => 'login',
-    'register_url' => 'register',
+    'login_url' => 'entrada/cocina/login',
+   /* 'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => false,*/
 
     /*
     |--------------------------------------------------------------------------
@@ -293,7 +293,7 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'Buscar',
+            'text'         => '(Sin uso)',
             'topnav_right' => true,
         ],
         [
@@ -313,27 +313,29 @@ return [
         ],
         [
             'text'        => 'Recetas',
-            'url'         => '/cocina/recetas',
+            'url'         => 'entrada/cocina/recetas',
             'icon'        => ' far fa-edit',
             'label_color' => 'success',
         ],
         [
             'text'        => 'Secciones',
-            'url'         => '/cocina/seccion',
+            'url'         => 'entrada/cocina/seccion',
             'icon'        => 'far fas fa-clone',
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'        => 'Publicidad',
+            'url'         => 'entrada/cocina/publi',
+            'icon'        => 'far fas fa-atom',
+            'label_color' => 'success',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text'        => 'Configuraciones',
+            'url'         => 'entrada/cocina/config',
+            'icon'        => 'fab fa-android',
+            'label_color' => 'success',
         ],
+
     
     ],
 
