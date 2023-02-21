@@ -45,7 +45,7 @@
         <label for="resumen" class="form-label">Resumen</label>
         <textarea class="form-control" id="resumen" name="resumen" rows="5" maxlength="510" style="resize:none;">{{$receta->resumen}}</textarea>
       </div>
-    
+    <hr>
       <div class="mb-3">
         <label for="imagen_portada" class="form-label">Imagen Portada</label>
       @if(empty($receta->imagen_portada))
@@ -61,8 +61,7 @@
       </span>     
       @endif
     </div>
-  
-      
+    <hr>
     <div class="mb-3">
       <div class="form-check form-switch">
         <label class="switch"><input type="checkbox" id="enabled" name="enabled" value="1" @if($receta->enabled==1) checked @endif><span class="slider round"></span></label>
@@ -77,10 +76,11 @@
 
     <input type="hidden" name="id" id="id" value="{{$receta->id}}"/>
     <input type="hidden" name="nuevo" value="0"/>
-
-
-     <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
-     <a href="{{route('recetas.index')}}" class="btn btn-primary">Volver</a>
+    <hr>
+    <div style="text-align:center;">
+      <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
+      <a href="{{route('recetas.index')}}" class="btn btn-primary">Volver</a>
+    </div>
     </form>
 </div>
 

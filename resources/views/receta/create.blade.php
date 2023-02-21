@@ -43,12 +43,12 @@
           <label for="resumen" class="form-label">Resumen</label>
           <textarea class="form-control" id="resumen" name="resumen" rows="5" maxlength="510" style="resize:none;">{{ old('resumen') }}</textarea>
         </div>
-      
+        <hr>
         <div class="mb-3">
           <label for="imagen_portada" class="form-label">Imagen Portada</label>
           <input type="file" name="imagen_portada" id="imagen_portada" accept="image/*" class="form-control @error('file') is-invalid @enderror">
         </div>
-
+        <hr>
         
       <div class="mb-3">
         <div class="form-check form-switch">
@@ -64,12 +64,15 @@
     
       <input type="hidden" name="id" id="id" value="{{$response->randomID}}"/>
       <input type="hidden" name="nuevo" value="1"/>
-
-      <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
-      <a href="{{route('recetas.index')}}" class="btn btn-primary">Volver</a>
+      <hr>
+      <div style="text-align:center;">
+        <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
+        <a href="{{route('recetas.index')}}" class="btn btn-primary">Volver</a>
+      </div>
       </form>
   </div>
-  
+
+  <hr>
   <div class="container mt-2">
     <div class="row">
         <div class="col-md-12">

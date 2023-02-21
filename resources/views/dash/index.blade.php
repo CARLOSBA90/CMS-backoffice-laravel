@@ -7,7 +7,8 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Estadisticas y avisos importantes!.</p>
+    <p>...</p>
 @stop
 
 @section('css')
@@ -15,5 +16,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script></script>
 @stop

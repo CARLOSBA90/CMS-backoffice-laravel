@@ -13,8 +13,8 @@ class AddAlter extends Migration
      */
     public function up()
     {
-        Schema::table('recetas', function (Blueprint $table) {
-            $table->integer('vistas')->nullable(); 
+        Schema::table('configs', function (Blueprint $table) {
+             $table->string('select',256)->nullable(); 
         });
     }
 
@@ -25,7 +25,7 @@ class AddAlter extends Migration
      */
     public function down()
     {
-        Schema::table('recetas', function (Blueprint $table) {
+        Schema::table('configs', function (Blueprint $table) {
 
         });
     }

@@ -18,11 +18,6 @@ Route::get('/', 'App\Http\Controllers\PublicController@index');
 
 //Route::get('/{seccion}','App\Http\Controllers\PublicController@seccion');
 
-/*
-Route::get('test', function () {
-    
-});*/
-
 
 
 //-------------MIDDLEWARE-------------------//
@@ -54,6 +49,12 @@ Route::get('entrada/cocina/dropzone', [DropzoneController::class, 'dropzone']);
 Route::post('entrada/cocina/dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 
 //------------------------------------------//
+
+//-------------CONFIG-----------------------//
+Route::resource('entrada/cocina/config','App\Http\Controllers\ConfigController');
+Route::get('entrada/cocina/config','App\Http\Controllers\ConfigController@index');
+//------------------------------------------//
+
 
 });
 

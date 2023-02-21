@@ -324,7 +324,7 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Publicidad',
+            'text'        => 'Publicidad (Sin uso)',
             'url'         => 'entrada/cocina/publi',
             'icon'        => 'far fas fa-atom',
             'label_color' => 'success',

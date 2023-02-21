@@ -140,3 +140,8 @@
   right:0px;
   position: absolute;
 }
+
+.formCenter{
+ margin:auto;
+ padding:20px;
+}
