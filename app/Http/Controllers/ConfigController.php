@@ -30,6 +30,7 @@ class ConfigController extends Controller{
         return ConfigService::store($request); 
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -75,4 +76,10 @@ class ConfigController extends Controller{
     {
         //
     }
+
+
+    public function ebanner(){
+        return 1;
+    }
+
 }

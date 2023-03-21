@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('css')
 @include('resources.backoffice.header')
 @include('resources.backoffice.crud.editor_header')
@@ -10,6 +9,9 @@
 @stop
 
 @section('content')
+
+<span class="index-loader" id="index-loader" style="display:none;"><div class="lds-ripple"><div></div><div></div></div></span>
+
 <div class="formCenter">
     <form action="{{route('config.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -19,14 +21,19 @@
               @php  /*Si es Banner, habilita SUBIR/BORRAR*/   @endphp              
                 <div class="form-group">
                     <label for="{{$config->llave}}">{{$config->llave}}</label>
-                    <input type="text" class="form-control" id="{{$config->llave}}" name="{{$config->llave}}" value="{{$config->valor}}">
+                    <input type="text" class="form-control" id="{{$config->llave}}" name="{{$config->llave}}" value="{{$config->valor}}" 
+                            @if($config->llave=="Banner") readonly @endif>
                     
                     @if($config->llave=="Banner")
-                        <div style="text-align:right;margin:10px;">
-                            <button type="button" class="btn btn-danger" tabindex="4"  data-bs-toggle="modal" data-bs-target="#modalEliminar">Borrar</button>
-                            <button type="button" class="btn btn-success" tabindex="4" >Cargar</button>
-                            <hr>
-                        </div>
+                      <div style="text-align:right;margin:10px;" id="div_banner">
+                       @if(empty($config->valor))
+                          <input type="file" id="imagenbanner" accept="image/*" class="form-control @error('file') is-invalid @enderror">
+                          <button type="button" class="btn btn-success" tabindex="4" id="cargar_banner">Cargar</button> 
+                       @else
+                          <button type="button" class="btn btn-danger" tabindex="4"  data-bs-toggle="modal" data-bs-target="#modalEliminar">Borrar</button>
+                        @endif
+                       </div>
+                      <hr>
                     @endif
                 </div>
          
@@ -67,11 +74,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <span id="modal-message"></span>
+          <span id="modal-message">¿Deseas borrar la imagen de Banner?</span>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-danger" onclick="borrar_banner()">Confirmar</button>
+          <button type="button" class="btn btn-danger" onclick="borrar_banner()" data-bs-dismiss="modal">Confirmar</button>
         </div>
       </div>
     </div>
@@ -79,7 +86,27 @@
 @stop
 
 @section('js')
+@include('resources.backoffice.footer_script')
 <script>
+  
+  function borrar_banner(){ 
+            $("#index-loader").show();
+            const Http = new XMLHttpRequest();
+            const url="ebanner";
 
+            //-----LLAMADA AJAX -----//
+              Http.open("GET", url);
+              Http.send();
+              Http.onreadystatechange=function(){
+                if(this.readyState==4){
+                  if(this.status==200 && (parseInt(Http.responseText)===1)){
+                        $("#Banner").val("");
+                        $("#div_banner").html("<input type='file' name='imagen_portada' id='imagen_portada' accept='image/*' class='form-control'><button type='button' class='btn btn-success' tabindex='4' id='cargar_banner'>Cargar</button>");
+                }else{ alert("Error al intentar eliminar Banner");}
+                $("#index-loader").hide();
+              }          
+            //---------------------///
+          }
+          }
 </script>
 @stop

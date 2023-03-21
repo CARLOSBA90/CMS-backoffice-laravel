@@ -34,25 +34,7 @@ class ConfigService{
     }
 /*
 
-    ///ACTUALIZA RECETA
-    public static function actualiza(Request $request, $id){
-        $receta = Receta::find($id);
-        $receta->nombre = $request->get('nombre');
-        $receta->descripcion = $request->get('descripcion');
-        $receta->enabled = $request->get('enabled')=='1'? 1 : 0;
-        $receta->published_at = $request->get('published_at');
-        $receta->seccion_id = $request->get('seccion');
-        $receta->resumen = $request->get('resumen');
 
-        if ($request->has('imagen_portada')) {
-            $imageName = time() . '.' . $request->imagen_portada->extension();
-            $request->imagen_portada->move(public_path('images/portada'),$imageName);
-             ///T0D0, valida que se haya guardado el archivo
-            $receta->imagen_portada = $imageName;
-
-        }else {}
-        $receta->save();
-    }
 
     ///ELIMINA RECETA
     public static function elimina($id){
