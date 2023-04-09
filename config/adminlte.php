@@ -256,10 +256,10 @@ return [
     'dashboard_url' => 'entrada/cocina',
     'logout_url' => 'logout',
     'login_url' => 'entrada/cocina/login',
-   /* 'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
-    'profile_url' => false,*/
+     'register_url' => 'register',
+   'password_reset_url' => 'password/reset',
+   /* 'password_email_url' => 'password/email',
+    'profile_url' => false,  */
 
     /*
     |--------------------------------------------------------------------------

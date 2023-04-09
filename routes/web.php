@@ -1,7 +1,11 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DropzoneController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +23,7 @@ Cuando agregamos rutas con recursos(los recursos siempre deben ir de ultimo para
 */
 
 Route::get('/', 'App\Http\Controllers\PublicController@index');
+
 
 
 //-------------MIDDLEWARE-------------------//
@@ -60,5 +65,6 @@ Route::post('entrada/cocina/dropzone/store', [DropzoneController::class, 'dropzo
 
 });
 
+//Route::auth();
 //------------------------------------------//
 

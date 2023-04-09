@@ -116,14 +116,11 @@
 
 <script>
   $(document).ready(function () {
-            $('#recetas').DataTable({
+            $('#secciones').DataTable({
             "lengthMenu": [[25,50,100,-1], [25,50,100,"Todos"]],
             "responsive": true,
             "autoWidth": true,
             "ordering":false,
-              //  "processing": true,
-              //  "serverSide": true,
-              // "columns": [],
                     "language": {
                     "emptyTable":			"<i>No hay datos disponibles en la tabla.</i>",
                     "info":		   		"Del _START_ al _END_ de _TOTAL_ ",
@@ -165,7 +162,7 @@
           $("#index-loader").show();
 
           const Http = new XMLHttpRequest();
-          const url="seccion/enable/"+id;
+          const url="{{route('seccion.index')}}/enable/"+id;
 
           //-----LLAMADA AJAX -----//
             Http.open("GET", url);
@@ -197,7 +194,7 @@
           }
 
           const xmlhttp = new XMLHttpRequest();
-          const url="seccion/"+id+"/edit";
+          const url="{{route('seccion.index')}}/"+id+"/edit";
           
           //-----LLAMADA AJAX -----//
           xmlhttp.onreadystatechange = function() {
@@ -240,7 +237,7 @@
         
           const id = $("#id_a").val()==""?  0 : $("#id_a").val(); 
 
-          const url = "/seccion/"+id;
+          const url = "{{route('seccion.index')}}/"+id;
 
                  /// si es editar se coloca PUT, caso contrario, nada
 
